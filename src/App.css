@@ -1,3 +1,4 @@
+/* styles.css */
 .App {
   text-align: center;
 }
@@ -12,6 +13,75 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.incdec {
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  width: auto;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 30px;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+
+  /* Accessibility enhancements */
+  text-align: top;
+  display: inline-block;
+  line-height: 1.5;
+
+  /* Other effects (optional) */
+  transform: perspective(1px); /* Subtle 3D effect */
+}
+
+.products{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.card{
+  margin: 20px;
+}
+
+.empty{
+  padding: 180px 500px;
+}
+
+.carthead{
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+}
+.total{
+  padding-top: 50px;
+  padding-right: 100px;
+ text-align: end;
+}
+
+.emptyres{
+  text-align: center;
+  padding-top: 10px;
+}
+
+.Qty{
+  display: grid;
+  grid-template-columns: 100px 20px 20px;
+  column-gap: 10px;
+}
+  /* Hover and focus effects */
+.incdec:hover {
+    transform: translateY(-3px) scale(1.05); /* Lift and enlarge on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0,)
+}
+
+
+
 
 .App-header {
   background-color: #282c34;
@@ -35,4 +105,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navs{
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.signup{
+  margin: 5% 10%;
+}
+
+.searchb {
+  margin: 10px 10%;
+  width: 50%;
+}
+
+.logo{
+  margin-left: 20px;
+}
+
+.alert{
+  text-align: center; 
+}
+
+.heading{
+  text-align: center;
+  margin-top: 50px;
 }

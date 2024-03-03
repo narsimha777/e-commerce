@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  Route,
+  BrowserRouter,
+  Routes
+} from "react-router-dom";
+import Welcome from './components/Welcome';
+import Signup from './components/signup';
+import Login from './components/login';
+import Cart from './components/cart';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [logged, setLogged] = useState(localStorage.getItem('logged') === 'true');
+  useEffect(() => {
+    // When the loggedIn state changes, update the localStorage value
+    localStorage.setItem('logged', logged);
+  }, [logged]);
+  // const [name, setName] = useState();
+  // const id = localStorage.getItem('id');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+     <Routes>
+      <Route path='/' element={<Welcome setLogged={setLogged} logged={logged}/>}/>
+      <Route path='/login' element={<Login setLogged = {setLogged} logged = {logged} />}/>
+      <Route path='/cart/:id' element={<Cart logged={logged}/>}/>  
+      <Route path='/signup' element={<Signup setLogged = {setLogged} logged = {logged} />}/>
+     </Routes>
+    </BrowserRouter>
   );
 }
 
