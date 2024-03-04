@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { decart, getCart, incart } from "../utils/requests";
 
-export default function Cart({logged}){
+export default function Cart({logged, token}){
     const {id} = useParams();
     const [data, setData] = useState();
     var price = 0;
     useEffect(() => {
         const fetchData = async () => {
-            await getCart(id, setData);
+            await getCart(id, setData, token);
         };
         fetchData();
     }, [id, data]);
@@ -18,7 +18,7 @@ export default function Cart({logged}){
         //     curr.count += 1;
         //     data[ind] = curr;
         //     setData(data);
-        await incart(id, product_id);
+        await incart(id, product_id, token);
     }
     const handledec = async(id,product_id)=>{
         // const ind = data.findIndex((ele)=>ele.id==id && ele.product_id==product_id);
@@ -28,7 +28,7 @@ export default function Cart({logged}){
         // data[ind] = curr;
         // setData(data);
         // }
-        await decart(id, product_id);
+        await decart(id, product_id, token);
     }
     if( data ){
         return (<><h1 className="carthead"><em>CART 🛒 </em></h1><div className="products">{data[0].price&&data.map((ele) => {

@@ -3,13 +3,14 @@ import Searchbar from "./searchbar";
 import { getProducts, gotoCart } from "../utils/requests";
 import Searchresult from "./searchresult";
 
-export default function Welcome({logged, setLogged}){  
+export default function Welcome({logged, setLogged, token}){  
     const [search, setSearch] = useState();
     const [products, setProducts] = useState();
     const id = localStorage.getItem('id');
     // const storedSessionId = sessionStorage.getItem("sessionId");
+    // const token = localStorage.getItem('token');
     const handleCart=async(product_id)=>{
-        await gotoCart(id, product_id);
+        await gotoCart(id, product_id, token);
     }
     useEffect(()=>{
         const fetchData = async()=>{
@@ -18,7 +19,7 @@ export default function Welcome({logged, setLogged}){
         fetchData()
     },[]);
     return (<>
-        <Searchbar setSearch={setSearch} logged={logged} setLogged={setLogged} />
+        <Searchbar setSearch={setSearch} logged={logged} setLogged={setLogged} token={token}/>
         {search&&(<Searchresult search={search} handleCart={handleCart} logged={logged}/>)}
         {!search&&products&& (<div className="products">{products.map((ele)=>{return (<div className="card border-warning mb-3" style={{width:"18rem", flexWrap:"wrap"}}>
             <div className="card-header">{ele.product_name.toUpperCase()}</div>

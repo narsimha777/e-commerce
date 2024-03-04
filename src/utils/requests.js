@@ -1,8 +1,6 @@
 const baseURL = 'https://e-commerce-rest-api-afg8.onrender.com/';
 
-const token = localStorage.getItem('token');
-
-const getCart = async(id, setData)=> {
+const getCart = async(id, setData, token)=> {
     try{
     const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/${id}`,{headers:{
         Authorization:token
@@ -22,13 +20,14 @@ const getCart = async(id, setData)=> {
     }
 };
 
-const gotoCart = async(id, product_id)=>{
+const gotoCart = async(id, product_id, token)=>{
     try{
         const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart`,{
             method:"POST",
             credentials:"include",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: token
                 },
                 body: JSON.stringify({id: id, product_id: product_id}),
         });
@@ -46,7 +45,7 @@ const gotoCart = async(id, product_id)=>{
     }
 }
 
-const incart = async(user_id, product_id)=>{
+const incart = async(user_id, product_id, token)=>{
     try{
         const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/inc/${user_id}`,
         { method :"POST",
@@ -65,7 +64,7 @@ const incart = async(user_id, product_id)=>{
     }
 };
 
-const decart = async(user_id, product_id)=>{
+const decart = async(user_id, product_id, token)=>{
     try{
         const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/dec/${user_id}`,
         { method :"POST",
