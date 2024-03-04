@@ -1,10 +1,10 @@
-const baseURL = 'http://localhost:3000/';
+const baseURL = 'https://e-commerce-rest-api-afg8.onrender.com/';
 
 const token = localStorage.getItem('token');
 
 const getCart = async(id, setData)=> {
     try{
-    const result = await fetch(`http://localhost:3000/cart/${id}`,{headers:{
+    const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/${id}`,{headers:{
         Authorization:token
     },
       method:"GET", credentials:'include'});
@@ -24,7 +24,7 @@ const getCart = async(id, setData)=> {
 
 const gotoCart = async(id, product_id)=>{
     try{
-        const result = await fetch(`http://localhost:3000/cart`,{
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart`,{
             method:"POST",
             credentials:"include",
             headers: {
@@ -48,7 +48,7 @@ const gotoCart = async(id, product_id)=>{
 
 const incart = async(user_id, product_id)=>{
     try{
-        const result = await fetch(`http://localhost:3000/cart/inc/${user_id}`,
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/inc/${user_id}`,
         { method :"POST",
           headers:{
             "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const incart = async(user_id, product_id)=>{
 
 const decart = async(user_id, product_id)=>{
     try{
-        const result = await fetch(`http://localhost:3000/cart/dec/${user_id}`,
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/cart/dec/${user_id}`,
         { method :"POST",
           headers:{
             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const decart = async(user_id, product_id)=>{
 
 const getProducts = async (setProducts) => {
     try {
-        const result = await fetch('http://localhost:3000/products', { method: "GET" });
+        const result = await fetch('https://e-commerce-rest-api-afg8.onrender.com/products', { method: "GET" });
         if (!result.ok) {
             const data = await result.json();
             console.log(data.message);
@@ -103,7 +103,7 @@ const getProducts = async (setProducts) => {
 
 const getSearchResult = async (searchTerm, setProducts) => {
     try {    
-        const result = await fetch(`http://localhost:3000/search`, {
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/search`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -127,7 +127,7 @@ const getSearchResult = async (searchTerm, setProducts) => {
 
 const getCategory = async(category)=>{
     try{
-        const result = await fetch(`http://localhost:3000/category`,{method:"GET", body:{category: category}});
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/category`,{method:"GET", body:{category: category}});
         if(!result.ok){
             const data = await result.json()
             console.log(data.message);
@@ -140,7 +140,7 @@ const getCategory = async(category)=>{
 
 const login = async(username, password, setLogged, setErr, setName, setid)=>{
     try{
-        const result = await fetch(`http://localhost:3000/login`,
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/login`,
         {method:"POST", 
             headers: {
             "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const login = async(username, password, setLogged, setErr, setName, setid)=>{
 
 const signup = async (username, password, user_id, setLogged, setErr, setName) => {
     try {
-        const result = await fetch(`http://localhost:3000/signup`, {
+        const result = await fetch(`https://e-commerce-rest-api-afg8.onrender.com/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json" // Specify JSON content type
@@ -203,7 +203,7 @@ const signup = async (username, password, user_id, setLogged, setErr, setName) =
 
 const logout = async(setLogged)=>{
     try{
-        const result = fetch('http://localhost:3000/logout', {
+        const result = fetch('https://e-commerce-rest-api-afg8.onrender.com/logout', {
             method: "POST",
             credentials:"include"
         });
