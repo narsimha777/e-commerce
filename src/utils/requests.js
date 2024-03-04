@@ -187,6 +187,7 @@ const signup = async (username, password, user_id, setLogged, setErr, setName) =
             const responseData = await result.json();
             if(responseData.user.user_name){
                 // setName(responseData.user.user_name);
+                localStorage.setItem('token', responseData.token);
                 localStorage.setItem('name', responseData.user.user_name);
                 localStorage.setItem('id', responseData.user.user_id);
             }
