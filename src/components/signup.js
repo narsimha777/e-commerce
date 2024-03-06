@@ -28,11 +28,11 @@ export default function Signup(props){
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label for="exampleInputEmail1" className="form-label">User Name</label>
-                <input type="text" className="form-control" id="exampleInputEmail1" value={username} aria-describedby="emailHelp" onChange={(e)=>setUsername(e.target.value)}/>
+                <input type="text" className="form-control" id="exampleInputEmail1" value={username} aria-describedby="emailHelp" onChange={(e)=>setUsername(e.target.value)} required/>
             </div>
             <div className="mb-3">
                 <label for="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e)=>setPassword(e.target.value)} required/>
             </div>
             {err&&<p style={{color:'red', textAlign:'center'}}>Username already taken</p>}
             <button type="submit" className="btn btn-primary">Submit</button>
